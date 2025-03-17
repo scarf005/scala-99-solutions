@@ -1,6 +1,6 @@
 package p01
 
-import munit.FunSuite
+import utils.S99Suite
 import scala.annotation.tailrec
 
 def lastBuiltin[A](xs: List[A]): A = xs.last
@@ -11,8 +11,12 @@ def lastBuiltin[A](xs: List[A]): A = xs.last
     case _ :: tail => lastRecursive(tail)
     case _         => throw new NoSuchElementException
 
-class P01Suite extends FunSuite:
-  test("Find the last element of a list."):
-    List(lastBuiltin, lastRecursive).foreach { last =>
-      assertEquals(last(List(1, 1, 2, 3, 5, 8)), 8)
-    }
+class Find_the_last_element_of_a_list extends S99Suite:
+  testMany(
+    input = List(1, 1, 2, 3, 5, 8),
+    expected = 8,
+    cases = List(
+      "builtin" -> lastBuiltin,
+      "recursive" -> lastRecursive,
+    ),
+  )

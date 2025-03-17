@@ -1,6 +1,6 @@
 package p03
 
-import munit.FunSuite
+import utils.S99Suite
 import scala.annotation.tailrec
 
 def nthBuiltin[A](n: Int, xs: List[A]): A = xs(n)
@@ -10,8 +10,15 @@ def nthBuiltin[A](n: Int, xs: List[A]): A = xs(n)
   case (n, _ :: tail) => nthRecursive(n - 1, tail)
   case (_, Nil)       => throw new NoSuchElementException
 
-class P03Suite extends FunSuite:
-  test("Find the Kth element of a list."):
-    List(nthBuiltin, nthRecursive).foreach { nth =>
-      assertEquals(nth(2, List(1, 1, 2, 3, 5, 8)), 2)
-    }
+class Find_the_nth_element_of_a_list extends S99Suite:
+  val n = 2
+  val list = List(1, 1, 2, 3, 5, 8)
+
+  testMany(
+    input = list,
+    expected = 2,
+    cases = List(
+      "builtin" -> (xs => nthBuiltin(n, xs)),
+      "recursive" -> (xs => nthRecursive(n, xs)),
+    ),
+  )
