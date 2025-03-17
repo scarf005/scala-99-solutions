@@ -1,4 +1,4 @@
-package P02
+package p02
 
 import munit.FunSuite
 import scala.annotation.tailrec

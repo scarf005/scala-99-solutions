@@ -4,7 +4,7 @@ Personal solutions while learning <https://aperiodic.net/pip/scala/s-99/>
 
 ## TOC
 
-- [Working With Lists](./lists)
+- [Working With Lists](./01.lists)
 
 ## Usage
 
